@@ -7,6 +7,7 @@ public class Book {
     private  String category;
     private String author;
     private int quantity;
+    private static int remaningBook;
 
     public Book() {
         this.id=++autoid;
@@ -25,6 +26,10 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    public static void setRemaningBook(int remaningBook) {
+        Book.remaningBook = remaningBook;
     }
 
     public int getId() {

@@ -1,6 +1,7 @@
 package Lab_Thuvien.entites;
 
 public class TicketBook {
+
     private int userId;
     private int bookId;
     private String borrowDate;
@@ -9,6 +10,11 @@ public class TicketBook {
     private static int autoId;
 
     public TicketBook() {
+        this.ticketId=++autoId;
+    }
+
+    public int getTicketId() {
+        return ticketId;
     }
 
     public int getUser() {

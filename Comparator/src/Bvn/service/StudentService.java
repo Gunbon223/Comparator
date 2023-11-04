@@ -28,29 +28,30 @@ public class StudentService {
     }
 
     public void removeStudent(int id,Map<Integer,Student> studentMap) {
-        if (studentMap.containskey(id)) {
+        if (studentMap.containsKey(id)) {
             studentMap.remove(id);
+        }
     }
     
     public void getStudentByIdAndDelete(Map<Integer,Student> studentMap, Scanner scan) {
-        while (true) {
-            System.out.println("Nhap id hs can tim: ");
-            int inputId = Integer.parseInt(scan.nextLine());
-            if (!studentMap.containsKey(inputId)) {
-                System.out.println("k co hs id nay");
-                System.out.println("Tim tiep? y/n");
-                if(utility.inputString(scan).equalsIgnoreCase("n")) {
-                    break;
-                }
-            } else {
-                System.out.println(studentMap.get(inputId));
-                System.out.println("Ban co muon xoa hs nay ? y/n" );
-                if(utility.inputString(scan).equalsIgnoreCase("y")) {
-                    removeStudent(inputMap,studentMap);
-                }
-                break;
-            }
-        }
+//        while (true) {
+//            System.out.println("Nhap id hs can tim: ");
+//            int inputId = Integer.parseInt(scan.nextLine());
+//            if (!studentMap.containsKey(inputId)) {
+//                System.out.println("k co hs id nay");
+//                System.out.println("Tim tiep? y/n");
+//                if(utility.inputString(scan).equalsIgnoreCase("n")) {
+//                    break;
+//                }
+//            } else {
+//                System.out.println(studentMap.get(inputId));
+//                System.out.println("Ban co muon xoa hs nay ? y/n" );
+//                if(utility.inputString(scan).equalsIgnoreCase("y")) {
+//                    removeStudent(studentMap,studentMap);
+//                }
+//                break;
+//            }
+//        }
     }
 
 

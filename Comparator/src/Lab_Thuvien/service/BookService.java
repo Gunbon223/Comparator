@@ -9,20 +9,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class BookService {
+public class BookService implements Iservice<Book>{
     Utility utility = new Utility();
-    public void inputBook(Map<Integer, Book> bookMap, Scanner scan) {
-        Book book = new Book();
-        System.out.println("Nhap ten sach: ");
-        book.setBookName(utility.inputString(scan));
-        System.out.println("nhap tac gia:");
-        book.setAuthor(utility.inputString(scan));
-        System.out.println("Nhap chu de: ");
-        book.setCategory(utility.inputString(scan));
-        System.out.println("Nhap so luong: " );
-        book.setQuantity(utility.inputInt(scan));
-        bookMap.put(book.getId(),book);
-    }
     
     public Book findBook(Map<Integer,Book> bookMap,Scanner scan) {
         while (true) {
@@ -35,29 +23,25 @@ public class BookService {
             }
         }
     }
-    
-    public void delete(Map<Integer,Book> bookMap,Scanner scan) {
-        String choice = "";
-        do {
-            System.out.println("Nhap ten sach muon xoa: ");
-            String bookFind= utility.inputString(scan);
-            Set<Integer> set = bookMap.keySet();
-            for (Integer key:
-                    set) {
-                if (bookFind.equalsIgnoreCase(bookMap.get(key).getBookName())) {
-                    bookMap.remove(key);
-                    System.out.println("da xoa sach tim thay");
-                }
-                else {
-                    System.out.println("khong tim thay lam lai ? y/n");
-                    choice = utility.inputString(scan);
-                }
-            }
-        }
-        while (choice.equalsIgnoreCase("y"));
+
+
+
+    @Override
+    public void insert(Scanner scan, Map<Integer, Book> bookMap) {
+        Book book = new Book();
+        System.out.println("Nhap ten sach: ");
+        book.setBookName(utility.inputString(scan));
+        System.out.println("nhap tac gia:");
+        book.setAuthor(utility.inputString(scan));
+        System.out.println("Nhap chu de: ");
+        book.setCategory(utility.inputString(scan));
+        System.out.println("Nhap so luong: " );
+        book.setQuantity(utility.inputInt(scan));
+        bookMap.put(book.getId(),book);
     }
 
-    public void update(Map<Integer,Book> bookMap,Scanner scan) {
+    @Override
+    public void update(Scanner scan, Map<Integer, Book> bookMap) {
         String choice = "";
         do {
             System.out.println("Nhap ten sach muon doi: ");
@@ -85,4 +69,25 @@ public class BookService {
         while (choice.equalsIgnoreCase("y"));
     }
 
+    @Override
+    public void delete(Scanner scan, Map<Integer, Book> bookMap) {
+        String choice = "";
+        do {
+            System.out.println("Nhap ten sach muon xoa: ");
+            String bookFind= utility.inputString(scan);
+            Set<Integer> set = bookMap.keySet();
+            for (Integer key:
+                    set) {
+                if (bookFind.equalsIgnoreCase(bookMap.get(key).getBookName())) {
+                    bookMap.remove(key);
+                    System.out.println("da xoa sach tim thay");
+                }
+                else {
+                    System.out.println("khong tim thay lam lai ? y/n");
+                    choice = utility.inputString(scan);
+                }
+            }
+        }
+        while (choice.equalsIgnoreCase("y"));
+    }
 }
